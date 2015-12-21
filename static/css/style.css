@@ -1,0 +1,52 @@
+.logo img {
+	display: block;
+	margin: auto;
+	height: 200px;
+}
+
+li {
+	list-style: none;
+}
+
+.bottom li {
+	width: 30%;
+}
+
+.title {
+	text-align: center;
+	margin: auto;
+	display: block;
+	font-size: 65px;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.loc {
+	text-align: center;
+	margin: auto;
+	display: block;
+	font-size: 45px;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.bottom {
+	font-family: 'Montserrat', sans-serif;
+	text-align: center;
+	font-size: 25px;
+	margin: 0 auto;
+	width: 35%;
+}
+
+.left {
+	text-align: left;
+	display: inline-block;
+}
+
+.right {
+	text-align: right;
+	display: inline-block;
+}
+
+.search {
+	margin: auto 0;
+	text-align: center;
+}

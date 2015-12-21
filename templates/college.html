@@ -1,0 +1,19 @@
+	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="static/css/style.css" type="text/css">
+	<br>
+	<div class="logo">
+		<img src="/static/img/{{ college_found['image'] }}">
+	</div>
+	<br>
+	<br>
+	<br>
+	<div class="college_info">
+		<li class="title">{{ college_found['name'] }}</li>
+		<li class="loc">{{ college_found['location'] }}</li>
+		<br>
+		<br>
+		<br>
+		<li class="bottom"><div class="left">Acceptance Rate:</div> <div class="right">{{ college_found['acceptance_rate'] }}</div></li>
+		<li class="bottom"><div class="left">Average SAT Scores:</div> <div class="right">{{ college_found['sat_score'] }}</div></li>
+		<li class="bottom"><div class="left">Average ACT Scores:</div> <div class="right">{{ college_found['act_score'] }}</div></li>
+	</div>

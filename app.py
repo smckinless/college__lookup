@@ -1,13 +1,29 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, url_for
 from models import select_college_holder
 import os
+from search import search
+from pymongo import MongoClient
+
+connection = MongoClient()
+#colleges = connection.colleges_holder.colleges.find()
+
+
 
 app = Flask(__name__)
 
 @app.route("/index", methods=["GET","POST"])
 def index():
-	colleges = select_college_holder()
+	colleges = connection.colleges_holder.colleges.find()
+	if request.method == 'POST':
+		colleges = connection.colleges_holder.colleges.find()
+		search_input = request.form['search']
+		college_found = search(search_input, colleges)
+
+		return render_template("college.html", search_input=search_input, colleges=colleges, college_found=college_found)
+
 	return render_template("index.html", colleges=colleges)
+
+
 
 #@app.route("/signup", methods=["GET","POST"])
 #def signup():
@@ -35,4 +51,4 @@ def directory(username):
 
 if __name__ == '__main__':
 	port = int(os.environ.get("PORT", 5000))
-	app.run(host='0.0.0.0', port=port)
+	app.run()
