@@ -4,18 +4,17 @@ import os
 from search import search
 from pymongo import MongoClient
 
-connection = MongoClient()
-#colleges = connection.colleges_holder.colleges.find()
-
+client = MongoClient('mongodb://heroku_srq7rv94:3o6c97o1kth5ctf2g10mqpii11@ds033875.mongolab.com:33875/heroku_srq7rv94')
+db = client.get_default_database()
 
 
 app = Flask(__name__)
 
 @app.route("/index", methods=["GET","POST"])
 def index():
-	colleges = connection.colleges_holder.colleges.find()
+	colleges = db.colleges.find()
 	if request.method == 'POST':
-		colleges = connection.colleges_holder.colleges.find()
+		colleges = db.colleges.find()
 		search_input = request.form['search']
 		college_found = search(search_input, colleges)
 
