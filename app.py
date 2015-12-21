@@ -10,7 +10,7 @@ db = client.get_default_database()
 
 app = Flask(__name__)
 
-@app.route("/index", methods=["GET","POST"])
+@app.route("/", methods=["GET","POST"])
 def index():
 	colleges = db.colleges.find()
 	if request.method == 'POST':
