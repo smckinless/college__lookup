@@ -12,12 +12,31 @@ li {
 	width: 30%;
 }
 
+#search-form {
+	text-align: center;
+}
+
 .title {
 	text-align: center;
 	margin: auto;
 	display: block;
 	font-size: 65px;
 	font-family: 'Montserrat', sans-serif;
+}
+
+.college-name {
+	padding: 10px;
+	margin-right: 20px;
+	font-size: 1em;
+}
+
+input.submit {
+	margin-left: 20px;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	font-size: 1em;
 }
 
 .loc {
