@@ -10,6 +10,14 @@ db = client.get_default_database()
 
 app = Flask(__name__)
 
+@app.errorhandler(404)
+def page_not_found(e):
+	return render_template('404.html'), 404
+
+@app.errorhandler(500)
+def system_error(e):
+	return render_template('500.html'), 500
+
 @app.route("/", methods=["GET","POST"])
 def index():
 	colleges = db.colleges.find()
@@ -18,7 +26,10 @@ def index():
 		search_input = request.form['search']
 		college_found = search(search_input, colleges)
 
-		return render_template("college.html", search_input=search_input, colleges=colleges, college_found=college_found)
+		if college_found == '<p class="title">This college does not yet exist in the database or there is a typo in the query</p>':
+			return college_found
+		else:
+			return render_template("college.html", search_input=search_input, colleges=colleges, college_found=college_found)
 
 	return render_template("index.html", colleges=colleges)
 
@@ -50,4 +61,4 @@ def directory(username):
 
 if __name__ == '__main__':
 	port = int(os.environ.get("PORT", 5000))
-	app.run(host='0.0.0.0', port=port)
+	app.run(host='0.0.0.0', port=port, debug=True)
